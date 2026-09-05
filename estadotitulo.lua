@@ -14,6 +14,9 @@ function EstadoTitulo:update(dt)
     
 end
 function EstadoTitulo:draw()
+    love.graphics.setFont(fuente)
+    love.graphics.setColor(0,0,1)
     love.graphics.printf(self.titulo, 0,64, ventana.ancho ,'center')
+    love.graphics.setColor(0,1,1)
     love.graphics.printf(self.subtitulo,0, 100, ventana.ancho , 'center')
 end

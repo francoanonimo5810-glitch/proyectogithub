@@ -5,6 +5,7 @@ ventana = {
     escala = 1
 }
 musica = nil 
+fuente = nil 
 require 'dependencias' 
 function comprobarcolicion(a, b)
     return a.x < b.x + b.ancho and
@@ -17,7 +18,8 @@ function love.load()
     lienso = love.graphics.newCanvas(ventana.ancho, ventana.alto)
     musica = love.audio.newSource("EFX INT Mutt Growl 42 B.wav","stream")
     musica:setLooping(true)
-    love.audio.play(musica)
+    love.audio.play(musica) 
+    fuente = love.graphics.newFont("fuentes/Blox2.ttf", 50)
    MaquinaEstadoGlobal = MaquinaEstado({
     ['Jugar'] = function () return  EstadoJugar() end,
     ['titulo'] = function () return  EstadoTitulo() end,

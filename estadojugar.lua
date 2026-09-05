@@ -20,7 +20,8 @@ function EstadoJugar:update(dt)
         print("¡Colisión detectada entre Jugador y Enemigo!")
         end
 end
-function EstadoJugar:draw()
+function EstadoJugar:draw() 
+     love.graphics.setColor(1,1,1,1)
     love.graphics.setCanvas(lienso)
             love.graphics.clear()
             --love.graphics.setCanvas()
