@@ -10,7 +10,7 @@ function Enemigo:init(x, y)
     self.alto = self.sprite:getHeight() * self.escala_y   
     self.x = x 
     self.y = y 
-    self.velocidad = 100
+    self.velocidad = 300
 end
 
 
