@@ -3,10 +3,16 @@ function EstadoDerota:init()
     
 end
 function EstadoDerota:ingresar()
-    
+    if musica then 
+    musica:stop()
+end 
+if det_derota then 
+det_derota:stop()
+det_derota:play()
+end
 end
 function EstadoDerota:salir()
-    
+    musica:play()
 end
 function EstadoDerota:update(dt)
     

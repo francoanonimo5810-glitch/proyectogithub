@@ -22,4 +22,10 @@ function MaquinaEstado:update(dt)
 end
 function MaquinaEstado:draw()
     self.actual:draw()
+end 
+function MaquinaEstado:keypressed(key, scancode, isrepeat)
+    -- Llama a keypressed solo en el estado activo
+    if self.actual and self.actual.keypressed then
+        self.actual:keypressed(key, scancode, isrepeat)
+    end
 end

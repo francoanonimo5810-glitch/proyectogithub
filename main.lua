@@ -6,6 +6,8 @@ ventana = {
 }
 musica = nil 
 fuente = nil 
+sfx_ataque = nil 
+det_derota = nil 
 require 'dependencias' 
 function comprobarcolicion(a, b)
     return a.x < b.x + b.ancho and
@@ -16,10 +18,12 @@ end
 function love.load()
     love.window.setMode(ventana.ancho * ventana.escala, ventana.alto * ventana.escala)
     lienso = love.graphics.newCanvas(ventana.ancho, ventana.alto)
-    musica = love.audio.newSource("EFX INT Mutt Growl 42 B.wav","stream")
+    musica = love.audio.newSource("Alpha Dance.ogg","stream")
     musica:setLooping(true)
     love.audio.play(musica) 
-    fuente = love.graphics.newFont("fuentes/Blox2.ttf", 50)
+     sfx_ataque = love.audio.newSource("EFX INT Mutt Growl 42 B.wav","static")
+     det_derota = love.audio.newSource("Beat ident.ogg","static")
+    fuente = love.graphics.newFont("fuentes/Blox2.ttf", 50)  
    MaquinaEstadoGlobal = MaquinaEstado({
     ['Jugar'] = function () return  EstadoJugar() end,
     ['titulo'] = function () return  EstadoTitulo() end,
@@ -37,16 +41,17 @@ function love.keypressed(key, scancode, isrepeat )
         MaquinaEstadoGlobal:cambiar('Jugar') 
     elseif key == "escape" then 
         MaquinaEstadoGlobal:cambiar('titulo',{titulo = "arena 2d", subtitulo = "reintentar"}) 
-    end
+
+    end 
+    MaquinaEstadoGlobal:keypressed(key, scancode, isrepeat)
 end
 function love.update(dt)
       MaquinaEstadoGlobal:update(dt)
 end 
-
 function love.draw()
 love.graphics.setCanvas(lienso)
 love.graphics.clear()
-          MaquinaEstadoGlobal:draw()
+MaquinaEstadoGlobal:draw()
           love.graphics.setCanvas()
           love.graphics.draw(lienso, 0, 0, 0, ventana.escala, ventana.escala)
 end 

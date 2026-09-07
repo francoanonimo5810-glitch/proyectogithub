@@ -31,4 +31,7 @@ function EstadoJugar:draw()
            -- love.graphics.draw(enemigo.sprite,enemigo.x,enemigo.y,0,0.1,0.1)
             love.graphics.setCanvas()
             love.graphics.draw(lienso,0,0,0,ventana.escala,ventana.escala)
+end 
+function EstadoJugar:keypressed(key)
+    self.jugador:keypressed(key)
 end

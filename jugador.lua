@@ -11,8 +11,15 @@ function Jugador:init(x,y)
     self.origen_y =  self.sprite:getHeight() / 2
     self.x = x 
     self.y = y 
-    self.velocidad = 1000
+    self.velocidad = 1000 
+    self.sfx = sfx_ataque
 end 
+function Jugador:keypressed(key)
+    if key == "space" or key == "z" then
+       self.sfx:stop()
+       self.sfx:play()
+    end
+end
 function Jugador:update(dt)
     if love.keyboard.isDown("right") then 
     self.x = self.x + (self.velocidad*dt)
