@@ -27,16 +27,7 @@ if love.keyboard.isDown("right") then
         self.x = self.x - (self.velocidad * dt)
     if self.x < 0 then 
         self.x = 0 
-    local limiteAncho = ventana.ancho / ventana.escala
-local limiteAlto = ventana.alto / ventana.escala
-
-if self.x + self.ancho > limiteAncho then
-    self.x = limiteAncho - self.ancho
-end
-
-if self.y + self.alto > limiteAlto then
-    self.y = limiteAlto - self.alto
-end
+    end
     end
 
     
