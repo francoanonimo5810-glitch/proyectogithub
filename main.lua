@@ -8,6 +8,7 @@ musica = nil
 fuente = nil 
 sfx_ataque = nil 
 det_derota = nil 
+mapa = nil 
 require 'dependencias' 
 function comprobarcolicion(a, b)
     return a.x < b.x + b.ancho and
@@ -30,7 +31,7 @@ function love.load()
     ['derota'] = function () return  EstadoDerota() end
    }) 
    MaquinaEstadoGlobal:cambiar('titulo',{titulo = "arena 2d", subtitulo = "presione enter"})
-   
+   --mapa = sti("mapa/arena1.lua")
    
 end 
 function love.keypressed(key, scancode, isrepeat )
@@ -51,6 +52,7 @@ end
 function love.draw()
 love.graphics.setCanvas(lienso)
 love.graphics.clear()
+--mapa:draw() 
 MaquinaEstadoGlobal:draw()
           love.graphics.setCanvas()
           love.graphics.draw(lienso, 0, 0, 0, ventana.escala, ventana.escala)

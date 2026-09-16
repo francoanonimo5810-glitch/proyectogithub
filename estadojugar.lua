@@ -4,7 +4,7 @@ function EstadoJugar:init()
      self.enemigo = Enemigo(ventana.ancho -20,20) 
 end
 function EstadoJugar:ingresar()
-    
+    mapa = sti("mapa/arena1.lua")
 end
 function EstadoJugar:salir()
     
@@ -35,7 +35,8 @@ function EstadoJugar:draw()
      love.graphics.pop()
            love.graphics.setCanvas()
             love.graphics.draw(lienso,0,0,0,ventana.escala,ventana.escala)
-end 
+               mapa:draw() 
+          end 
 function EstadoJugar:keypressed(key)
     self.jugador:keypressed(key)
 end
