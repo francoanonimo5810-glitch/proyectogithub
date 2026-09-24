@@ -13,6 +13,7 @@ end
 end
 function EstadoDerota:salir()
     musica:play()
+   
 end
 function EstadoDerota:update(dt)
     

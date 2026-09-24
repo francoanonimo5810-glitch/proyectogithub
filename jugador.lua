@@ -1,7 +1,7 @@
 Class = require 'class'
 Jugador = Class{} 
 
-function Jugador:init(x,y)
+function Jugador:init(x,y,mundo)
     self.sprite = love.graphics.newImage("cartoon-dog.png")
     self.escala_x = 0.5
     self.escala_y = 0.5
@@ -11,8 +11,17 @@ function Jugador:init(x,y)
     self.origen_y =  self.sprite:getHeight() / 2
     self.x = x 
     self.y = y 
+    self.anterior_x = x
+    self.anterior_y = y
     self.velocidad = 1000 
-    self.sfx = sfx_ataque
+    self.sfx = sfx_ataque 
+    self.mundo = mundo  
+    if self.mundo then
+        local top_left_x = self.x - (self.ancho / 2)
+        local top_left_y = self.y - (self.alto / 2)
+        self.mundo:add(self, top_left_x, top_left_y, self.ancho, self.alto)
+    end
+
 end 
 function Jugador:keypressed(key)
     if key == "space" or key == "z" then
@@ -21,12 +30,25 @@ function Jugador:keypressed(key)
     end
 end
 function Jugador:update(dt)
+    self.anterior_x = self.x 
+    self.anterior_y = self.y 
 if love.keyboard.isDown("right") then 
         self.x = self.x + (self.velocidad * dt)
     elseif love.keyboard.isDown("left") then
         self.x = self.x - (self.velocidad * dt)
     if self.x < 0 then 
         self.x = 0 
+    end
+    if love.keyboard.isDown("down") then
+        self.y = self.y + (self.velocidad * dt)
+    elseif love.keyboard.isDown("up") then 
+        self.y = self.y - (self.velocidad * dt)
+    end
+    
+    if self.mundo then
+        local top_left_x = self.x - (self.ancho / 2)
+        local top_left_y = self.y - (self.alto / 2)
+        self.mundo:update(self, top_left_x, top_left_y, self.ancho, self.alto)
     end
     end
 
