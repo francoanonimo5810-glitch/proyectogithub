@@ -1,3 +1,4 @@
+ Class = require 'class'
  sti = require 'lib.sti'
  bump = require 'lib.bump'
  camara = require 'lib.camera'

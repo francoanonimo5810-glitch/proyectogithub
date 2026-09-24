@@ -15,7 +15,7 @@ function EstadoJugar:ingresar()
         ventana.mapa_ancho = self.mapa.width * self.mapa.tilewidth 
         ventana.mapa_alto = self.mapa.height * self.mapa.tileheight 
     end
-    self.jugador = Jugador(ventana.ancho / 2,ventana.alto / 2,mundo,self.mundo)
+    self.jugador = Jugador(ventana.ancho / 2,ventana.alto / 2,self.mundo)
      self.enemigo = Enemigo(ventana.ancho -20,20,self.mundo)
     self.enemigo.esenemigo = true
     self.camara_principal = camara() 
